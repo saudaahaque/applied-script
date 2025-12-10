@@ -1,0 +1,22 @@
+Välkommen till mitt RECON script för att kontrollera en Linux-miljö
+
+=== SYSTEMINFO ===
+Linux sshh 6.12.38+kali-arm64 #1 SMP Kali 6.12.38-1kali1 (2025-08-12) aarch64 GNU/Linux
+
+=== AKTUELL ANVÄNDARE ===
+ssshh
+
+=== ANVÄNDARE MED SHELL ===
+root:x:0:0:root:/root:/usr/bin/zsh
+postgres:x:114:118:PostgreSQL administrator:/var/lib/postgresql:/bin/bash
+ssshh:x:1000:1000:ssshh,,,:/home/ssshh:/usr/bin/zsh
+
+=== NÄTVERK ===
+    inet 127.0.0.1/8 scope host lo
+    inet6 ::1/128 scope host noprefixroute 
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute eth0
+    inet6 fd17:625c:f037:2:9349:8d48:34f4:b18f/64 scope global temporary dynamic 
+    inet6 fd17:625c:f037:2:a00:27ff:fe2b:e49d/64 scope global dynamic mngtmpaddr noprefixroute 
+    inet6 fe80::a00:27ff:fe2b:e49d/64 scope link noprefixroute 
+
+=== LÄGG TILL FLERA TESTER ===
