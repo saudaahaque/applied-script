@@ -1,58 +1,35 @@
 #!/usr/bin/env python3
-import platform
-import time
 import os
+import time
+import platform
 
-# 1) Kontrollera OS
+print("=== AV/EDR EICAR test ===")
+
+# 1) Kontrollera OS (du har redan gjort detta – men här är en tydlig variant)
 system = platform.system()
+print(f"Operativsystem: {system}")
 
-if system == "Windows":
-    print("Windows upptäckt. Scriptet fortsätter..")
-elif system == "Linux":
-    print("Linux upptäckt. Detta script är avsett för Windows.")
-    exit()
-elif system == "Darwin":
-    print("macOS upptäckt. Detta script är avsett för Windows.")
-    exit()
-else:
-    print(f"Okänt operativsystem ({system}). Detta script är avsett för Windows. Avbryter körning.")
-    exit()
+# 2) EICAR teststräng (ofarlig teststräng, används för AV-test)
+EICAR = "X5O!P%@AP[4\\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*"
 
-# 2) EICAR-signaturen (måste vara exakt)
-eicar_str = "X5O!P%@AP[4\\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*"
+# 3) Skapa fil i nuvarande katalog (o3/o3)
+filename = "eicar_test.txt"
+filepath = os.path.join(os.getcwd(), filename)
 
-# 3) Välj var filen ska skapas (ex: skrivbordet)
-# På Windows brukar Desktop ligga här:
-filnamn = os.path.join(os.path.expanduser("~"), "Desktop", "AV-TEST-NOT-DANGEROUS.txt")
+print(f"Skapar testfil: {filepath}")
 
-# Skapa filen och skriv signaturen
-try:
-    with open(filnamn, "w") as f:
-        f.write(eicar_str)
-    print(f"[+++] Fil skapad: {filnamn}")
-except Exception as e:
-    print("[!!!] Kunde inte skapa filen. Testa en annan mapp (t.ex. Hämtade filer).")
-    print(e)
-    exit()
+# 4) Skriv testfil
+with open(filepath, "w") as f:
+    f.write(EICAR)
 
-# Vänta så AV/EDR hinner reagera
+print("Testfil skapad.")
+print("Väntar 3 sekunder för eventuell AV-reaktion...")
 time.sleep(3)
 
-# Kontrollera om filen finns kvar och kan läsas
-try:
-    if os.path.exists(filnamn):
-        with open(filnamn, "r") as f:
-            fil_innehall = f.read()
-
-        if fil_innehall == eicar_str:
-            print("[???] Filen finns kvar och matchar EICAR. AV/EDR kanske inte har reagerat än.")
-        else:
-            print("[???] Filen finns kvar men innehållet skiljer sig.")
-    else:
-        print("[!!!] Filen finns inte kvar (troligen borttagen/karantänad av AV/EDR).")
-        print("[---] Din AV/EDR-lösning är helt fungerande och skyddar mot kända virus-signaturer.")
-except Exception as e:
-    print("[!!!] Filen kunde inte läsas!")
-    print("[!!!] AV har tagit bort/karantänat filen.")
-    print("[---] Din AV/EDR-lösning är helt fungerande och skyddar mot kända virus-signaturer.")
-#!/usr/bin/env python3
+# 5) Kontrollera om filen finns kvar
+if os.path.exists(filepath):
+    print(" Filen finns kvar.")
+    print("Det är normalt på Linux om du inte har AV/EDR som reagerar på EICAR.")
+else:
+    print(" Filen har tagits bort.")
+    print("AV/EDR har reagerat korrekt.")
