@@ -1,27 +1,31 @@
 #!/usr/bin/env python3
-import subprocess 				                    	# Så att filen kan köra kommandon i CMD.
-import os						                        # Så att programet kan arbeta med filvägar och directories.
-import urllib.request					                # Så att programet kan ladda ner filer från internet.
+import subprocess 				                    	    # Så att filen kan köra kommandon i CMD.
+import os						                            # Så att programet kan arbeta med filvägar och directories.
+import urllib.request					                    # Så att programet kan ladda ner filer från internet.
 
-script_dir = os.path.dirname(os.path.abspath(__file__)) # Ger mappen som denna python fil ligger i.
-filename = "rockyou.txt.gz"				                # Namn på den fil som kommer laddas ner.
-url = "https://weakpass.com/download/90/rockyou.txt.gz" # Var filen laddas ner från.
-file_path = os.path.join(script_dir, filename)		    # Filvägen som senare kommer letas efter.
+script_dir = os.path.dirname(os.path.abspath(__file__))     # Ger mappen som denna python fil ligger i.
+filename_gz = "rockyou.txt.gz"			                    # Namn på den fil som kommer laddas ner.
+filename_txt = "rockyou.txt"
+url = "https://weakpass.com/download/90/rockyou.txt.gz"     # Var filen laddas ner från.
+gz_path = os.path.join(script_dir, filename_gz)		        # Filvägen som senare kommer letas efter.
+txt_path = os.path.join(script_dir, filename_txt)
 
-if not os.path.exists(file_path):			            # Om rockyou.txt.gz inte finns i mappen som passwords-checker.py ligger i så kommer filen att installeras.
+if not os.path.exists(gz_path):			                    # Om rockyou.txt.gz inte finns i mappen som passwords-checker.py ligger i så kommer filen att installeras.
     print("Fil ej hittad. Installerar...")
-    urllib.request.urlretrieve(url, file_path)
-    print(f"Installation färdig: {file_path}")
+    urllib.request.urlretrieve(url, gz_path)
+    print(f"Installation färdig: {gz_path}")
 else:
     print("Nödvändig fil redan installerad!")
     
-print("Extraherar filen")
-subprocess.run(["gunzip", "rockyou.txt.gz"], check=True)# Kommando i Linux CMD som extraherar rockyou.txt.gz --> rockyou.txt
-print("Filen extraherad!")
+if os.path.exists(txt_path):                                # Om rockyou.txt redan finns kommer rockyou.txt.gz inte bli extraherad.
+    print("Extraherad fil finns redan! Hoppar över extrahering.")
+else:
+    print("Extraherar filen...")
+    subprocess.run(["gunzip", "rockyou.txt.gz"], check=True)# Kommando i Linux CMD som extraherar rockyou.txt.gz --> rockyou.txt
+    print("Filen extraherad!")
 
 MIN_LENGTH = 12
 WORDLIST_PATH = "rockyou.txt"
-
 def is_in_wordlist(password, wordlist_path):
     try:
         with open(wordlist_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -31,7 +35,6 @@ def is_in_wordlist(password, wordlist_path):
     except FileNotFoundError:
         print("Ordboksfilen hittades inte:", wordlist_path)
     return False
-
 
 password = input("Ange ett lösenord: ")
 
