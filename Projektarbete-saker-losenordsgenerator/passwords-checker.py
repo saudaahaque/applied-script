@@ -21,7 +21,7 @@ def ensure_rockyou(wordlist_path: str = WORDLIST_PATH) -> None:
     Om den saknas: ladda ner rockyou.txt.gz och packa upp.
     """
     if os.path.exists(wordlist_path):
-        return  # allt klart
+        return  #allt är klart 
 
     print(f"{wordlist_path} saknas. Laddar ner {ROCKYOU_GZ}...")
 
