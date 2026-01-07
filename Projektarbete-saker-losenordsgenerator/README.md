@@ -17,7 +17,7 @@ Programmet:
 
 
 Säkerhetskontroller:
-Lösenordet måste:
+Lösenordet måste vara:
 - vara minst 12 tecken långt
 - innehålla minst:
    - en stor bokstav
