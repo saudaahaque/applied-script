@@ -81,5 +81,10 @@ Möjliga framtida förbättringar:
 - Visning av flera fel samtidigt
 
 
+Uppdatering 7/01/2026:
+- Projektet har kompletterats med ett flödeschema och skärminspelning som visar hur koden fungerar i praktiken. Materialet används för att tydliggöra programmets logik, körning och resultat i terminalen.  
+
+
 Författare: Sauda Haque
+
 
