@@ -30,22 +30,16 @@ uppgiftens instruktioner.
 Att köra EICAR-testet i Linux eller macOS skulle därför
 inte uppfylla övningens krav.
 
-## Testresultat (Linux)
+Därför gjordes testet på Daniels Widows dator. Se `screenshot_terminal2.png`. 
 
-Scriptet kördes i en Linux-miljö. Vid körning skapades en EICAR-testfil (`eicar_test.txt`) korrekt.  
-Filen förblev kvar efter skapandet, vilket är förväntat beteende i denna miljö då ingen
-antivirus- eller EDR-lösning är aktiv som reagerar på EICAR-signaturen.
+
+## Testresultat (Windows)
+
+Scriptet kördes i en Windows-miljö i PowerShell. Vid körning skapades en EICAR-testfil (`eicar_test.txt`) korrekt.  
+Filen förblev kvar efter skapandet under en längre period än väntad. Men den försvann tillslut.
 
 Se `screenshot_terminal1.png` för terminalutskrift som visar körning av scriptet och skapandet
-av testfilen.
-
-## Hur testet hade genomförts i Windows
-Om en Windows-miljö hade använts skulle skriptet:
-1. Skapa en fil innehållande EICAR-signaturen
-2. Vänta några sekunder
-3. Kontrollera om filen tagits bort eller karantänats
-4. Verifiera detektionen via Windows Defender Event Viewer
-   (Event ID 1116 / 1117)
+av testfilen.)
 
 ## Slutsats
 Skriptet fungerar som förväntat genom att korrekt identifiera
