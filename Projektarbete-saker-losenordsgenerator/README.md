@@ -9,6 +9,7 @@ Programmet hanterar automatiskt nedladdning och upppackning av lösenordslistan 
 
 **Uppfyllda krav (kopplat till bedömning):**
 **Funktionalitet**
+
 Programmet:
 - tar emot ett lösenord från användaren
 - validerar lösenordet stegvis
@@ -46,8 +47,11 @@ Lösenordet måste vara:
 
 **Projektstruktur:**
 saker-losenordsgenerator/
+
 ├── passwords-checker.py
+
 ├── README.md
+
 └── rockyou.txt (laddas ner automatiskt vid körning)
 
 
