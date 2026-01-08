@@ -69,6 +69,7 @@ När programmet körs ombeds användaren att ange ett lösenord.
 **Exempel på körning:**
 Svagt lösenord (finns i ordlista):
 "Lösenordet finns i ordboken. Välj ett starkare lösenord."
+Se bild på koden under körning: ![screenshot-script](https://github.com/saudaahaque/applied-script/blob/main/Projektarbete-saker-losenordsgenerator/Script-screenshot.png).
 
 **Starkt lösenord:**
 "Ditt lösenord bedöms som starkt."
